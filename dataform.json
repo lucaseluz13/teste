@@ -3,6 +3,6 @@
   "assertionSchema": "dataform_assertions",
   "warehouse": "bigquery",
   "defaultDatabase": "gruposfa-bi",
-  "defaultLocation": "southamerica-east1"
+  "defaultLocation": "US"
 }
     
