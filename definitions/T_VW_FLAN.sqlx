@@ -1,5 +1,6 @@
-
-CREATE OR REPLACE VIEW bronze.T_VW_FLAN AS
+config { 
+  type: "view"
+  }
 
 WITH flan AS (
 	SELECT 	

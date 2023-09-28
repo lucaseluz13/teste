@@ -1,6 +1,11 @@
 config { 
   type: "view",
-  materialized: true
+  database:"gruposfa-bi",
+  schema: "silver",
+  name: "baguncinha",
+  description: "teste",
+  tags:["Baguncinha",
+        "Cobrança"]
 }
 
 select 
@@ -12,9 +17,9 @@ select
   LAN.DAT_VENCIMENTO,
   SUM(LAN.VLR_ORIGINAL) AS VLR_ORIGINAL,
   SUM(LAN.VLR_BAIXA)    AS VLR_BAIXA
-from ${ref("bronze","T_VW_FLAN")} AS LAN
- LEFT JOIN bronze.T_VW_XVENDAPARCELA AS VP ON VP.ID_LAN = LAN.ID_LAN AND VP.ID_COLIGADA = LAN.ID_COLIGADA
- LEFT JOIN bronze.C_VW_XVENDA AS XV ON XV.ID_VENDA = VP.ID_VENDA
-INNER JOIN bronze.C_VW_XEMPREENDIMENTO AS XE ON XE.ID_PESS_EMPR = XV.ID_PESS_EMPR 
+from ${ref("T_VW_FLAN")} AS LAN
+ LEFT JOIN ${ref("T_VW_XVENDAPARCELA")} AS VP ON VP.ID_LAN = LAN.ID_LAN AND VP.ID_COLIGADA = LAN.ID_COLIGADA
+ LEFT JOIN ${ref("C_VW_XVENDA")} AS XV ON XV.ID_VENDA = VP.ID_VENDA
+INNER JOIN ${ref("C_VW_XEMPREENDIMENTO")} AS XE ON XE.ID_PESS_EMPR = XV.ID_PESS_EMPR 
 WHERE LAN.DAT_VENCIMENTO < CAST("2023-09-30" AS DATETIME) AND LAN.DAT_VENCIMENTO IS NOT NULL
 GROUP BY 1, 2, 3, 4, 5, 6

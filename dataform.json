@@ -1,6 +1,6 @@
 {
-  "defaultSchema": "dataform",
-  "assertionSchema": "dataform_assertions",
+  "defaultSchema": "bronze",
+  "assertionSchema": "silver",
   "warehouse": "bigquery",
   "defaultDatabase": "gruposfa-bi",
   "defaultLocation": "US"

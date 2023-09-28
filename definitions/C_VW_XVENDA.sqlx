@@ -1,5 +1,6 @@
-
-CREATE OR REPLACE VIEW bronze.C_VW_XVENDA AS
+config { 
+  type: "view"
+  }
 
 WITH xvenda AS (
 	SELECT 	

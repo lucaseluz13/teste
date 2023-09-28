@@ -1,0 +1,13 @@
+config { 
+  type: "table",
+  database:"gruposfa-bi",
+  schema: "gold",
+  name: "baguncinha_table",
+  description: "teste",
+  tags:["Baguncinha",
+        "Cobrança"],
+  bigquery: {
+    partitionBy: "date(DAT_BAIXA)"
+  }
+}
+select * from ${ref("baguncinha")}
